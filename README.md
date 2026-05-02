@@ -1,6 +1,6 @@
 # Finance+AI Course and AI4S Research Platform
 
-北京邮电大学经济管理学院 Finance+AI 课程与 AI4S 学术成果综合网站。项目使用 Astro 生成纯静态页面，内容以 Markdown 文件维护，适合通过 Cloudflare Pages Direct Upload 部署。
+北京邮电大学经济管理学院 Finance+AI 课程与 AI4S 学术成果综合网站。项目使用 Astro 生成纯静态页面，内容以 Markdown 文件维护，适合通过 Cloudflare Pages 部署到 `www.papersreview.com`。
 
 ## 技术栈
 
@@ -56,17 +56,17 @@ npm run build
 
 ## Cloudflare Pages 部署
 
-项目名保持为：
+当前 Cloudflare Pages 项目名：
 
 ```text
-shiyuqi4ai
+ai4bupt2
 ```
 
 部署命令：
 
 ```bash
 npm run build
-npx wrangler pages deploy ./dist --project-name=shiyuqi4ai
+npx wrangler pages deploy ./dist --project-name=ai4bupt2
 ```
 
 如果需要使用项目脚本：
@@ -80,16 +80,10 @@ npm run deploy
 当前源码中的 canonical / Open Graph 站点地址在 `src/lib/site.ts` 中维护：
 
 ```ts
-url: "https://www.shiyuqi.com"
-```
-
-如需将 `www.papersreview.com` 作为主域名，请把该字段改为：
-
-```ts
 url: "https://www.papersreview.com"
 ```
 
-如果只是把 `www.papersreview.com` 作为 Cloudflare Pages 的附加自定义域名，可以保持当前配置不变。
+如需换回旧域名，只需同步修改 `src/lib/site.ts` 和 `astro.config.mjs`。
 
 ## 内容更新
 

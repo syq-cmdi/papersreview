@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "typecheck": "astro check",
     "index:search": "pagefind --site dist --output-subdir pagefind",
-    "deploy": "wrangler pages deploy ./dist --project-name=shiyuqi4ai"
+    "deploy": "wrangler pages deploy ./dist --project-name=ai4bupt2"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.4",

@@ -3,7 +3,7 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 
 export default defineConfig({
-  site: "https://www.shiyuqi.com",
+  site: "https://www.papersreview.com",
   output: "static",
   trailingSlash: "always",
   integrations: [mdx(), react()],

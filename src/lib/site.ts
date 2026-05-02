@@ -6,7 +6,7 @@ export const site = {
     "北京邮电大学经济管理学院李飞团队建设的金融+AI跨学科实训、财报智能分析与AI for Science学术成果综合网站。",
   descriptionEn:
     "A Finance+AI interdisciplinary course and AI for Science research platform led by Fei Li at Beijing University of Posts and Telecommunications.",
-  url: "https://www.shiyuqi.com",
+  url: "https://www.papersreview.com",
   email: "emlifei@bupt.edu.cn",
   phone: "13958105169",
   organization: "北京邮电大学经济管理学院",

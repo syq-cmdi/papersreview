@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { byFeaturedThenDate } from "@/lib/content";
+
+const projects = (await getCollection("projects")).sort(byFeaturedThenDate);
+const statusMap = {
+  active: "进行中",
+  completed: "已完成",
+  planned: "规划中"
+};
+---
+
+<BaseLayout title="项目案例" description="财报智能分析、云边协同能效优化、AI+金融安全、液冷自动化等学生与科研项目案例。">
+  <section class="border-b border-border bg-muted/40 py-14">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Projects"
+        title="项目案例"
+        description="每个项目以 Markdown 文件维护，包含问题描述、方法、技术栈、贡献者、Demo 与关联论文。"
+      />
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="container grid gap-6 lg:grid-cols-3">
+      {projects.map((project) => (
+        <article class="overflow-hidden rounded-card border border-border bg-background shadow-sm transition hover:-translate-y-0.5 hover:border-accent/70 hover:shadow-academic">
+          {project.data.cover && <img src={project.data.cover} alt={`${project.data.title} 项目示意图`} class="aspect-[16/9] w-full bg-muted object-cover" loading="lazy" />}
+          <div class="p-5">
+            <div class="flex flex-wrap items-center gap-2 text-xs font-semibold">
+              <span class="rounded-full bg-signal/10 px-2.5 py-1 text-signal">{statusMap[project.data.status]}</span>
+              {project.data.featured && <span class="rounded-full bg-academic/10 px-2.5 py-1 text-academic dark:text-primary">精选</span>}
+            </div>
+            <h2 class="mt-4 font-serif text-2xl font-semibold leading-snug text-foreground hover:text-accent">
+              <a href={`/zh/projects/${project.id}/`}>{project.data.title}</a>
+            </h2>
+            <p class="mt-3 text-sm leading-6 text-muted-foreground">{project.data.summary}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {project.data.tags.map((tag) => <span class="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground">{tag}</span>)}
+            </div>
+            <a href={`/zh/projects/${project.id}/`} class="mt-5 inline-flex text-sm font-semibold text-academic hover:text-accent dark:text-primary">查看项目详情</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,95 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import NewsTimeline from "@/components/NewsTimeline.astro";
+import { byDateDesc } from "@/lib/content";
+
+const news = (await getCollection("news")).sort(byDateDesc);
+const years = [...new Set(news.map((item) => item.data.date.getFullYear()))].sort((a, b) => b - a);
+const categories = [
+  ["all", "全部类型"],
+  ["course", "课程"],
+  ["research", "科研"],
+  ["award", "获奖"],
+  ["talk", "报告"],
+  ["media", "媒体"],
+  ["milestone", "节点"]
+];
+---
+
+<BaseLayout title="新闻动态" description="课程建设、AI4S 项目进展、论文录用和会议报告时间线。">
+  <section class="border-b border-border bg-muted/40 py-14">
+    <div class="container">
+      <SectionHeading
+        eyebrow="News"
+        title="新闻动态"
+        description="按时间倒序展示课程和科研进展。新增动态只需要在 content/news 中添加 Markdown 文件。"
+      />
+    </div>
+  </section>
+
+  <section class="py-10">
+    <div class="container grid gap-10 lg:grid-cols-[280px_1fr]">
+      <aside class="h-fit rounded-card border border-border bg-background p-4 shadow-sm">
+        <label class="block">
+          <span class="text-xs font-semibold text-muted-foreground">关键词</span>
+          <input id="news-search" class="mt-1 w-full rounded-card border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent" type="search" placeholder="搜索标题、摘要或标签" />
+        </label>
+        <label class="mt-4 block">
+          <span class="text-xs font-semibold text-muted-foreground">年份</span>
+          <select id="news-year" class="mt-1 w-full rounded-card border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent">
+            <option value="all">全部年份</option>
+            {years.map((year) => <option value={year}>{year}</option>)}
+          </select>
+        </label>
+        <label class="mt-4 block">
+          <span class="text-xs font-semibold text-muted-foreground">类型</span>
+          <select id="news-category" class="mt-1 w-full rounded-card border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent">
+            {categories.map(([value, label]) => <option value={value}>{label}</option>)}
+          </select>
+        </label>
+        <p id="news-count" class="mt-5 text-sm text-muted-foreground">{news.length} 条动态</p>
+      </aside>
+      <div>
+        <NewsTimeline items={news} />
+        <p id="news-empty" class="mt-8 hidden rounded-card border border-border bg-muted/50 p-6 text-sm text-muted-foreground">没有匹配的动态。</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const search = document.querySelector("#news-search");
+  const year = document.querySelector("#news-year");
+  const category = document.querySelector("#news-category");
+  const count = document.querySelector("#news-count");
+  const empty = document.querySelector("#news-empty");
+
+  const applyNewsFilters = () => {
+    const items = [...document.querySelectorAll("[data-news-item]")];
+    const query = search instanceof HTMLInputElement ? search.value.trim().toLowerCase() : "";
+    const selectedYear = year instanceof HTMLSelectElement ? year.value : "all";
+    const selectedCategory = category instanceof HTMLSelectElement ? category.value : "all";
+    let visible = 0;
+
+    for (const item of items) {
+      const element = item instanceof HTMLElement ? item : undefined;
+      if (!element) continue;
+      const matches =
+        (!query || element.innerText.toLowerCase().includes(query)) &&
+        (selectedYear === "all" || element.dataset.year === selectedYear) &&
+        (selectedCategory === "all" || element.dataset.category === selectedCategory);
+      element.classList.toggle("hidden", !matches);
+      if (matches) visible += 1;
+    }
+
+    if (count) count.textContent = `${visible} 条动态`;
+    empty?.classList.toggle("hidden", visible !== 0);
+  };
+
+  for (const input of [search, year, category]) {
+    input?.addEventListener("input", applyNewsFilters);
+    input?.addEventListener("change", applyNewsFilters);
+  }
+</script>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- 由 Microsoft Visio, SVG Export 生成 projectimg2.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="11.6929in" height="8.26772in"
+		viewBox="0 0 841.89 595.276" xml:space="preserve" color-interpolation-filters="sRGB" class="st24">
+	<v:documentProperties v:langID="2052" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvSubprocessMaster" v:prompt="" v:val="VT4(Rectangle)"/>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#f1f5f9;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st2 {fill:#1e293b;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st3 {fill:none;stroke:none;stroke-linecap:butt;stroke-width:0.75}
+		.st4 {fill:#ffffff;font-family:微软雅黑;font-size:2.295em;font-weight:bold}
+		.st5 {fill:#4f46e5;stroke:#312e81;stroke-linecap:butt;stroke-width:3.06}
+		.st6 {fill:#ffffff;font-family:微软雅黑;font-size:1.53001em;font-weight:bold}
+		.st7 {fill:#0891b2;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st8 {fill:#ffffff;font-family:微软雅黑;font-size:1.4025em;font-weight:bold}
+		.st9 {fill:#e0f2fe;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st10 {fill:#0369a1;font-family:微软雅黑;font-size:1.1475em}
+		.st11 {fill:#db2777;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st12 {fill:#fce7f3;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st13 {fill:#be185d;font-family:微软雅黑;font-size:1.1475em}
+		.st14 {fill:#059669;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st15 {fill:#d1fae5;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st16 {fill:#047857;font-family:微软雅黑;font-size:1.1475em}
+		.st17 {fill:#d97706;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st18 {fill:#fef3c7;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st19 {fill:#92400e;font-family:微软雅黑;font-size:1.1475em}
+		.st20 {stroke:#334155;stroke-linecap:butt;stroke-width:3.06}
+		.st21 {fill:#e2e8f0;stroke:none;stroke-linecap:butt;stroke-width:1.53}
+		.st22 {fill:#1e293b;font-family:微软雅黑;font-size:1.27501em;font-weight:bold}
+		.st23 {font-family:Arial;font-size:1em}
+		.st24 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<v:userDefs>
+			<v:ud v:nameU="msvThemeOrder" v:val="VT0(0):26"/>
+		</v:userDefs>
+		<title>页-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="9"
+				v:shadowOffsetY="-9"/>
+		<g id="shape2-1" v:mID="2" v:groupContext="shape" transform="translate(114.6,-151.654)">
+			<title>工作表.2</title>
+			<rect x="0" y="258.041" width="612" height="337.234" class="st1"/>
+		</g>
+		<g id="shape3-3" v:mID="3" v:groupContext="shape" transform="translate(129.9,-416.693)">
+			<title>工作表.3</title>
+			<path d="M0 587.91 A12.2403 7.37025 -180 0 0 12.24 595.28 L569.16 595.28 A12.2403 7.37025 -180 0 0 581.4 587.91 L581.4
+						 565.8 A12.2403 7.37025 -180 0 0 569.16 558.43 L12.24 558.43 A12.2403 7.37025 -180 0 0 -0 565.8 L0 587.91
+						 Z" class="st2"/>
+		</g>
+		<g id="shape4-5" v:mID="4" v:groupContext="shape" transform="translate(296.67,-423.02)">
+			<title>工作表.4</title>
+			<desc>数字化转型度量模型</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="123.93" cy="583.668" width="247.86" height="23.2151"/>
+			<rect x="0" y="572.061" width="247.86" height="23.2151" class="st3"/>
+			<text x="0" y="592.04" class="st4" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>数字化转型度量模型</text>		</g>
+		<g id="shape5-8" v:mID="5" v:groupContext="shape" transform="translate(367.05,-255.923)">
+			<title>工作表.5</title>
+			<ellipse cx="53.55" cy="554.698" rx="53.55" ry="40.578" class="st5"/>
+		</g>
+		<g id="shape6-10" v:mID="6" v:groupContext="shape" transform="translate(394.016,-298.124)">
+			<title>工作表.6</title>
+			<desc>年报</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="26.9291" cy="586.928" width="53.86" height="16.6949"/>
+			<rect x="0" y="578.581" width="53.8583" height="16.6949" class="st3"/>
+			<text x="8.57" y="592.51" class="st6" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>年报</text>		</g>
+		<g id="shape7-13" v:mID="7" v:groupContext="shape" transform="translate(383.88,-280.733)">
+			<title>工作表.7</title>
+			<desc>知识图谱</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="41.9182" cy="586.928" width="83.84" height="16.6949"/>
+			<rect x="0" y="578.581" width="83.8364" height="16.6949" class="st3"/>
+			<text x="5.2" y="592.51" class="st6" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>知识图谱</text>		</g>
+		<g id="shape8-16" v:mID="8" v:groupContext="shape" transform="translate(362.835,-342.875)">
+			<title>工作表.8</title>
+			<ellipse cx="56.6929" cy="575.545" rx="56.6929" ry="19.7304" class="st7"/>
+		</g>
+		<g id="shape9-18" v:mID="9" v:groupContext="shape" transform="translate(386.223,-352.616)">
+			<title>工作表.9</title>
+			<desc>技术基础</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="33.66" cy="587.898" width="67.33" height="14.7553"/>
+			<rect x="0" y="580.52" width="67.32" height="14.7553" class="st3"/>
+			<text x="0" y="593.02" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>技术基础</text>		</g>
+		<g id="shape10-21" v:mID="10" v:groupContext="shape" transform="translate(332.504,-391.851)">
+			<title>工作表.10</title>
+			<path d="M0 585.54 A17.4051 9.73612 -180 0 0 17.4 595.28 L156.64 595.28 A17.4051 9.73612 -180 0 0 174.05 585.54 L174.05
+						 584.15 A17.4051 9.73612 -180 0 0 156.64 574.41 L17.4 574.41 A17.4051 9.73612 -180 0 0 0 584.15 L0 585.54
+						 Z" class="st9"/>
+		</g>
+		<g id="shape11-23" v:mID="11" v:groupContext="shape" transform="translate(337.323,-394.39)">
+			<title>工作表.11</title>
+			<desc>数据基础设施计算/AI投入</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="82.9134" cy="587.765" width="165.83" height="15.0211"/>
+			<rect x="0" y="580.254" width="165.827" height="15.0211" class="st3"/>
+			<text x="4.25" y="591.9" class="st10" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>数据基础设施计算/AI投入</text>		</g>
+		<g id="shape12-26" v:mID="12" v:groupContext="shape" transform="translate(267.874,-273.313)">
+			<title>工作表.12</title>
+			<ellipse cx="38.1131" cy="572.088" rx="38.1131" ry="23.1874" class="st11"/>
+		</g>
+		<g id="shape13-28" v:mID="13" v:groupContext="shape" transform="translate(272.837,-287.847)">
+			<title>工作表.13</title>
+			<desc>组织建设</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="33.66" cy="587.624" width="67.33" height="15.3037"/>
+			<rect x="0" y="579.972" width="67.32" height="15.3037" class="st3"/>
+			<text x="0" y="592.74" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>组织建设</text>		</g>
+		<g id="shape14-31" v:mID="14" v:groupContext="shape" transform="translate(251.575,-251.6)">
+			<title>工作表.14</title>
+			<path d="M0 586.25 A9.54943 9.02171 -180 0 0 9.55 595.28 L99.58 595.28 A9.54943 9.02171 -180 0 0 109.13 586.25 L109.13
+						 584.97 A9.54943 9.02171 -180 0 0 99.58 575.94 L9.55 575.94 A9.54943 9.02171 -180 0 0 -0 584.97 L0 586.25
+						 Z" class="st12"/>
+		</g>
+		<g id="shape15-33" v:mID="15" v:groupContext="shape" transform="translate(257.232,-255.188)">
+			<title>工作表.15</title>
+			<desc>数字化人才占比</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="48.195" cy="589.015" width="96.4" height="12.5212"/>
+			<rect x="0" y="582.754" width="96.39" height="12.5212" class="st3"/>
+			<text x="0" y="593.2" class="st13" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>数字化人才占比</text>		</g>
+		<g id="shape16-36" v:mID="16" v:groupContext="shape" transform="translate(497.1,-273.313)">
+			<title>工作表.16</title>
+			<ellipse cx="37.1822" cy="572.088" rx="37.1822" ry="23.1874" class="st14"/>
+		</g>
+		<g id="shape17-38" v:mID="17" v:groupContext="shape" transform="translate(501.549,-287.041)">
+			<title>工作表.17</title>
+			<desc>业务转型</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="33.66" cy="587.624" width="67.33" height="15.3037"/>
+			<rect x="0" y="579.972" width="67.32" height="15.3037" class="st3"/>
+			<text x="0" y="592.74" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>业务转型</text>		</g>
+		<g id="shape18-41" v:mID="18" v:groupContext="shape" transform="translate(486.709,-253.748)">
+			<title>工作表.18</title>
+			<path d="M0 587.16 A9.49983 8.11578 -180 0 0 9.5 595.28 L99.07 595.28 A9.49983 8.11578 -180 0 0 108.57 587.16 L108.57
+						 586 A9.49983 8.11578 -180 0 0 99.07 577.89 L9.5 577.89 A9.49983 8.11578 -180 0 0 0 586 L0 587.16 Z"
+					class="st15"/>
+		</g>
+		<g id="shape19-43" v:mID="19" v:groupContext="shape" transform="translate(491.799,-255.028)">
+			<title>工作表.19</title>
+			<desc>数字化收入占比</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="48.195" cy="589.015" width="96.4" height="12.5212"/>
+			<rect x="0" y="582.754" width="96.39" height="12.5212" class="st3"/>
+			<text x="0" y="593.2" class="st16" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>数字化收入占比</text>		</g>
+		<g id="shape20-46" v:mID="20" v:groupContext="shape" transform="translate(368.504,-210.78)">
+			<title>工作表.20</title>
+			<ellipse cx="53.55" cy="578.824" rx="53.55" ry="16.4519" class="st17"/>
+		</g>
+		<g id="shape21-48" v:mID="21" v:groupContext="shape" transform="translate(386.668,-219.24)">
+			<title>工作表.21</title>
+			<desc>创新能力</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="33.66" cy="587.621" width="67.33" height="15.3084"/>
+			<rect x="0" y="579.967" width="67.32" height="15.3084" class="st3"/>
+			<text x="0" y="592.74" class="st8" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>创新能力</text>		</g>
+		<g id="shape22-51" v:mID="22" v:groupContext="shape" transform="translate(368.504,-191.339)">
+			<title>工作表.22</title>
+			<path d="M-0 587.16 A10.7102 8.11831 -180 0 0 10.71 595.28 L96.39 595.28 A10.7102 8.11831 -180 0 0 107.1 587.16 L107.1
+						 586 A10.7102 8.11831 -180 0 0 96.39 577.88 L10.71 577.88 A10.7102 8.11831 -180 0 0 0 586 L0 587.16 Z"
+					class="st18"/>
+		</g>
+		<g id="shape23-53" v:mID="23" v:groupContext="shape" transform="translate(379.843,-193.877)">
+			<title>工作表.23</title>
+			<desc>数字专利数量</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="41.31" cy="589.013" width="82.62" height="12.5251"/>
+			<rect x="0" y="582.75" width="82.62" height="12.5251" class="st3"/>
+			<text x="0" y="593.2" class="st19" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>数字专利数量</text>		</g>
+		<g id="shape24-56" v:mID="24" v:groupContext="shape" transform="translate(-174.006,286.025) rotate(-92.7181)">
+			<title>工作表.24</title>
+			<path d="M0 595.28 L5.4 595.28" class="st20"/>
+		</g>
+		<g id="shape25-59" v:mID="25" v:groupContext="shape" transform="translate(367.05,894.051) rotate(180)">
+			<title>工作表.25</title>
+			<path d="M0 595.28 L22.95 595.28" class="st20"/>
+		</g>
+		<g id="shape26-62" v:mID="26" v:groupContext="shape" transform="translate(474.15,-296.501)">
+			<title>工作表.26</title>
+			<path d="M0 595.28 L22.95 595.28" class="st20"/>
+		</g>
+		<g id="shape27-65" v:mID="27" v:groupContext="shape" transform="translate(1015.84,333.242) rotate(89.4118)">
+			<title>工作表.27</title>
+			<path d="M0 595.28 L12.24 595.28" class="st20"/>
+		</g>
+		<g id="shape28-68" v:mID="28" v:groupContext="shape" transform="translate(130.17,-157.679)">
+			<title>工作表.28</title>
+			<path d="M-0 585.61 A12.2403 9.66327 -180 0 0 12.24 595.28 L569.16 595.28 A12.2403 9.66327 -180 0 0 581.4 585.61 L581.4
+						 578.37 A12.2403 9.66327 -180 0 0 569.16 568.7 L12.24 568.7 A12.2403 9.66327 -180 0 0 -0 578.37 L0 585.61
+						 Z" class="st21"/>
+		</g>
+		<g id="shape29-70" v:mID="29" v:groupContext="shape" transform="translate(176.07,-163.799)">
+			<title>工作表.29</title>
+			<desc>评估体系指标技术投入 | 组织变革 | 业务转型 | 创新驱动</desc>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+			<v:textRect cx="244.8" cy="586.096" width="489.6" height="18.36"/>
+			<rect x="0" y="576.916" width="489.6" height="18.36" class="st3"/>
+			<text x="49.67" y="590.75" class="st22" v:langID="2052"><v:paragraph v:horizAlign="1"/><v:tabList/>评估体系指标：技术投入<tspan
+						class="st23"> </tspan><tspan class="st23">| </tspan>组织变革<tspan class="st23"> </tspan><tspan class="st23">| </tspan>业务转型<tspan
+						class="st23"> </tspan><tspan class="st23">| </tspan>创新驱动</text>		</g>
+	</g>
+</svg>

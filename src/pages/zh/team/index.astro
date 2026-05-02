@@ -1,0 +1,75 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { site } from "@/lib/site";
+
+const members = (await getCollection("team")).sort((a, b) => a.data.order - b.data.order);
+const groupMap = {
+  lead: "负责人",
+  faculty: "教师",
+  industry: "企业导师",
+  advisor: "行业专家",
+  ta: "助教",
+  student: "学生",
+  alumni: "校友"
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Finance+AI 团队",
+  itemListElement: members.map((member, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Person",
+      name: member.data.name,
+      affiliation: member.data.affiliation ?? site.organization,
+      jobTitle: member.data.role
+    }
+  }))
+};
+---
+
+<BaseLayout title="师资与团队" description="北京邮电大学 Finance+AI 课程与 AI4S 项目的教师、企业导师、行业专家和学生团队。" jsonLd={jsonLd}>
+  <section class="border-b border-border bg-muted/40 py-14">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Team"
+        title="师资与团队"
+        description="团队信息由 content/team 自动生成，后续新增导师或学生只需添加一个 Markdown 文件。"
+      />
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="container grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {members.map((member) => (
+        <article class="rounded-card border border-border bg-background p-5 shadow-sm transition hover:border-accent/70 hover:shadow-academic">
+          <div class="flex items-start gap-4">
+            <img
+              src={member.data.image ?? "/img/person3.jpg"}
+              alt={`${member.data.name} 头像`}
+              class="h-20 w-20 rounded-card border border-border object-cover"
+              loading="lazy"
+            />
+            <div>
+              <p class="text-xs font-semibold text-signal">{groupMap[member.data.group]}</p>
+              <h2 class="mt-1 font-serif text-2xl font-semibold text-foreground">{member.data.name}</h2>
+              <p class="mt-1 text-sm leading-6 text-muted-foreground">{member.data.role}</p>
+            </div>
+          </div>
+          {member.data.affiliation && <p class="mt-4 text-sm leading-6 text-muted-foreground">{member.data.affiliation}</p>}
+          <div class="mt-4 flex flex-wrap gap-2">
+            {member.data.tags.map((tag) => <span class="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground">{tag}</span>)}
+          </div>
+          <div class="mt-5 flex flex-wrap gap-3">
+            {member.data.email && <a class="text-sm font-semibold text-academic hover:text-accent dark:text-primary" href={`mailto:${member.data.email}`}>邮件</a>}
+            {member.data.homepage && <a class="text-sm font-semibold text-academic hover:text-accent dark:text-primary" href={member.data.homepage}>主页</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import { site } from "@/lib/site";
+
+interface Props {
+  lang?: "zh" | "en";
+}
+
+const { lang = "zh" } = Astro.props;
+const description = lang === "zh" ? site.description : site.descriptionEn;
+---
+
+<footer class="border-t border-border bg-muted/50">
+  <div class="container grid gap-8 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <div class="text-lg font-semibold text-foreground">Finance<span class="text-signal">+</span>AI</div>
+      <p class="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
+        {description}
+      </p>
+    </div>
+    <div>
+      <h2 class="text-sm font-semibold text-foreground">{lang === "zh" ? "快速链接" : "Quick Links"}</h2>
+      <ul class="mt-3 space-y-2 text-sm text-muted-foreground">
+        <li><a class="hover:text-accent" href={lang === "zh" ? "/zh/publications/" : "/en/publications/"}>{lang === "zh" ? "学术成果" : "Publications"}</a></li>
+        <li><a class="hover:text-accent" href={lang === "zh" ? "/zh/news/" : "/zh/news/"}>{lang === "zh" ? "新闻动态" : "News"}</a></li>
+        <li><a class="hover:text-accent" href={lang === "zh" ? "/zh/resources/" : "/zh/resources/"}>{lang === "zh" ? "资源中心" : "Resources"}</a></li>
+        <li><a class="hover:text-accent" href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-sm font-semibold text-foreground">{lang === "zh" ? "联系" : "Contact"}</h2>
+      <p class="mt-3 text-sm leading-6 text-muted-foreground">
+        {lang === "zh" ? site.organization : site.organizationEn}<br />
+        <a class="hover:text-accent" href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+  </div>
+  <div class="border-t border-border py-5">
+    <div class="container flex flex-col gap-2 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
+      <p>{lang === "zh" ? "© 2026 Finance+AI. 北京邮电大学经济管理学院李飞团队." : "© 2026 Finance+AI. Fei Li Team, BUPT."}</p>
+      <p>Static site ready for Cloudflare Pages Direct Upload.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const talks = await getCollection("talks");
+  return talks.map((talk) => ({
+    params: { id: talk.id },
+    props: { talk }
+  }));
+}
+
+const { talk } = Astro.props;
+const { Content } = await render(talk);
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "long", day: "numeric" }).format(date);
+const dateText = talk.data.endDate ? `${formatDate(talk.data.date)} - ${formatDate(talk.data.endDate)}` : formatDate(talk.data.date);
+---
+
+<BaseLayout title={talk.data.title} description={`${talk.data.event} · ${talk.data.speaker}`}>
+  <article class="container max-w-4xl py-14">
+    <a href="/zh/talks/" class="text-sm font-semibold text-academic hover:text-accent dark:text-primary">返回会议报告</a>
+    <div class="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-muted-foreground">
+      <time datetime={talk.data.date.toISOString()}>{dateText}</time>
+      {talk.data.location && <span class="rounded-full bg-muted px-2.5 py-1">{talk.data.location}</span>}
+      {talk.data.tags.map((tag) => <span class="rounded-full border border-border px-2.5 py-1">{tag}</span>)}
+    </div>
+    <h1 class="mt-5 font-serif text-4xl font-semibold leading-tight text-foreground">{talk.data.title}</h1>
+    <p class="mt-5 text-base leading-7 text-muted-foreground">{talk.data.event} · 报告人：{talk.data.speaker}</p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      {talk.data.slides && <a href={talk.data.slides} class="rounded-card bg-academic px-4 py-2 text-sm font-semibold text-white hover:bg-academic-2">下载幻灯片</a>}
+      {talk.data.poster && <a href={talk.data.poster} class="rounded-card border border-border px-4 py-2 text-sm font-semibold text-foreground hover:border-accent hover:text-accent">查看海报</a>}
+    </div>
+    <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

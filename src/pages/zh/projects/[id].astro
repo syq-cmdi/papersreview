@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const statusMap = {
+  active: "进行中",
+  completed: "已完成",
+  planned: "规划中"
+};
+---
+
+<BaseLayout title={project.data.title} description={project.data.summary} image={project.data.cover ?? "/img/projectimg1.png"}>
+  <article class="container max-w-5xl py-14">
+    <a href="/zh/projects/" class="text-sm font-semibold text-academic hover:text-accent dark:text-primary">返回项目案例</a>
+    <div class="mt-6 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+      <div>
+        <div class="flex flex-wrap gap-2 text-xs font-semibold">
+          <span class="rounded-full bg-signal/10 px-2.5 py-1 text-signal">{statusMap[project.data.status]}</span>
+          {project.data.tags.map((tag) => <span class="rounded-full border border-border px-2.5 py-1 text-muted-foreground">{tag}</span>)}
+        </div>
+        <h1 class="mt-5 font-serif text-4xl font-semibold leading-tight text-foreground">{project.data.title}</h1>
+        <p class="mt-5 text-base leading-8 text-muted-foreground">{project.data.summary}</p>
+      </div>
+      {project.data.cover && <img src={project.data.cover} alt={`${project.data.title} 项目示意图`} class="rounded-card border border-border bg-muted shadow-sm" loading="lazy" />}
+    </div>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-[0.72fr_0.28fr]">
+      <div class="prose prose-slate max-w-none dark:prose-invert">
+        <Content />
+      </div>
+      <aside class="h-fit rounded-card border border-border bg-muted/35 p-5">
+        <h2 class="text-sm font-semibold text-foreground">项目元数据</h2>
+        <dl class="mt-4 space-y-4 text-sm">
+          <div>
+            <dt class="font-semibold text-muted-foreground">技术栈</dt>
+            <dd class="mt-2 flex flex-wrap gap-2">
+              {project.data.techStack.map((item) => <span class="rounded-full border border-border bg-background px-2.5 py-1 text-xs text-muted-foreground">{item}</span>)}
+            </dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-muted-foreground">贡献者</dt>
+            <dd class="mt-1 text-foreground">{project.data.contributors.join("、") || "[TODO: 待补充]"}</dd>
+          </div>
+          {project.data.demoUrl && <div><dt class="font-semibold text-muted-foreground">Demo</dt><dd class="mt-1"><a class="text-academic hover:text-accent dark:text-primary" href={project.data.demoUrl}>打开演示</a></dd></div>}
+          {project.data.repoUrl && <div><dt class="font-semibold text-muted-foreground">代码仓库</dt><dd class="mt-1"><a class="text-academic hover:text-accent dark:text-primary" href={project.data.repoUrl}>查看仓库</a></dd></div>}
+        </dl>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

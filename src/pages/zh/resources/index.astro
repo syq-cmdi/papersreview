@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { byDateDesc } from "@/lib/content";
+
+const resources = (await getCollection("resources")).sort(byDateDesc);
+const typeMap = {
+  syllabus: "课程大纲",
+  guide: "指南",
+  dataset: "数据集",
+  code: "代码",
+  platform: "平台",
+  document: "文档"
+};
+---
+
+<BaseLayout title="资源中心" description="课程大纲、环境搭建、API 申请、数据集、代码仓库和平台入口。">
+  <section class="border-b border-border bg-muted/40 py-14">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Resources"
+        title="资源中心"
+        description="集中放置课程与项目所需的公开资料入口，后续文件下载地址和仓库链接可直接在 content/resources 更新。"
+      />
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="container grid gap-5 lg:grid-cols-2">
+      {resources.map((resource) => (
+        <article class="rounded-card border border-border bg-background p-6 shadow-sm transition hover:border-accent/70 hover:shadow-academic">
+          <div class="flex flex-wrap items-center gap-2 text-xs font-semibold">
+            <span class="rounded-full bg-muted px-2.5 py-1 text-muted-foreground">{typeMap[resource.data.type]}</span>
+            <span class="rounded-full bg-signal/10 px-2.5 py-1 text-signal">{resource.data.lang === "bilingual" ? "中英双语" : resource.data.lang.toUpperCase()}</span>
+          </div>
+          <h2 class="mt-4 font-serif text-2xl font-semibold text-foreground">{resource.data.title}</h2>
+          {resource.data.summary && <p class="mt-3 text-sm leading-6 text-muted-foreground">{resource.data.summary}</p>}
+          <div class="mt-4 flex flex-wrap gap-2">
+            {resource.data.tags.map((tag) => <span class="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground">{tag}</span>)}
+          </div>
+          <div class="mt-5 flex flex-wrap gap-3">
+            {resource.data.url && <a href={resource.data.url} class="text-sm font-semibold text-academic hover:text-accent dark:text-primary">打开链接</a>}
+            {resource.data.file && <a href={resource.data.file} class="text-sm font-semibold text-academic hover:text-accent dark:text-primary">下载文件</a>}
+            {!resource.data.url && !resource.data.file && <span class="text-sm text-muted-foreground">[TODO: 待补充下载或访问地址]</span>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

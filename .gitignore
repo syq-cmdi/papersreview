@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.pagefind/
+.wrangler/
+.env
+.env.*
+.DS_Store
+mid-term/
+raw_capture/
+shiyuqi4ai/
+*.zip

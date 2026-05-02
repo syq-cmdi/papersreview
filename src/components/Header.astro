@@ -1,0 +1,78 @@
+---
+import { navEn, navZh, site } from "@/lib/site";
+
+interface Props {
+  lang?: "zh" | "en";
+}
+
+const { lang = "zh" } = Astro.props;
+const nav = lang === "zh" ? navZh : navEn;
+const pathname = Astro.url.pathname;
+const oppositeHref = lang === "zh" ? "/en/" : "/zh/";
+---
+
+<header class="sticky top-0 z-50 border-b border-border/80 bg-background/92 backdrop-blur">
+  <div class="container flex min-h-16 items-center justify-between gap-6">
+    <a href={lang === "zh" ? "/zh/" : "/en/"} class="group flex items-center gap-3" aria-label={site.name}>
+      <span class="grid h-9 w-9 place-items-center rounded-card bg-academic text-sm font-bold text-white shadow-academic">F+</span>
+      <span class="leading-tight">
+        <span class="block text-sm font-semibold text-foreground">Finance<span class="text-signal">+</span>AI</span>
+        <span class="hidden text-xs text-muted-foreground sm:block">{lang === "zh" ? "课程与学术成果平台" : "Course & Research"}</span>
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label={lang === "zh" ? "主导航" : "Main navigation"}>
+      {
+        nav.map((item) => {
+          const active = pathname === item.href || (item.href !== `/${lang}/` && pathname.startsWith(item.href));
+          return (
+            <a
+              href={item.href}
+              class:list={[
+                "rounded-card px-3 py-2 text-sm font-medium transition",
+                active ? "bg-muted text-academic dark:text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={lang === "zh" ? "/zh/publications/" : "/en/publications/"}
+        class="hidden rounded-card border border-border px-3 py-2 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent md:inline-flex"
+      >
+        {lang === "zh" ? "成果库" : "Publications"}
+      </a>
+      <a
+        href={oppositeHref}
+        class="rounded-card bg-academic px-3 py-2 text-sm font-semibold text-white transition hover:bg-academic-2"
+      >
+        {lang === "zh" ? "EN" : "中文"}
+      </a>
+    </div>
+  </div>
+</header>
+<div class="sticky top-16 z-40 border-b border-border/80 bg-background/95 backdrop-blur lg:hidden">
+  <nav class="container flex gap-2 overflow-x-auto py-2" aria-label={lang === "zh" ? "移动端导航" : "Mobile navigation"}>
+    {
+      nav.map((item) => {
+        const active = pathname === item.href || (item.href !== `/${lang}/` && pathname.startsWith(item.href));
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              "shrink-0 rounded-card px-3 py-2 text-sm font-medium transition",
+              active ? "bg-muted text-academic dark:text-primary" : "text-muted-foreground hover:bg-muted hover:text-foreground"
+            ]}
+          >
+            {item.label}
+          </a>
+        );
+      })
+    }
+  </nav>
+</div>

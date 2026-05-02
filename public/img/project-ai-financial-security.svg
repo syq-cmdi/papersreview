@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">AI+金融安全教学案例插图</title>
+  <desc id="desc">大模型智能体、检索增强和风险识别面板共同支撑金融安全与合规分析。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#eef6ff"/>
+      <stop offset=".6" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#fff4e6"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#12355b"/>
+      <stop offset="1" stop-color="#1f5f8b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#12355b" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <circle cx="792" cy="112" r="104" fill="#d97706" opacity=".1"/>
+  <circle cx="145" cy="410" r="126" fill="#1f5f8b" opacity=".08"/>
+  <g stroke="#9fb8cf" stroke-width="2" opacity=".45">
+    <path d="M236 170h488M236 252h488M236 334h488"/>
+    <path d="M318 118v286M480 118v286M642 118v286"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="126" y="126" width="266" height="288" rx="22" fill="#fff"/>
+    <rect x="160" y="164" width="94" height="16" rx="8" fill="#12355b"/>
+    <rect x="160" y="204" width="178" height="12" rx="6" fill="#dbe7f2"/>
+    <rect x="160" y="232" width="146" height="12" rx="6" fill="#dbe7f2"/>
+    <rect x="160" y="282" width="70" height="70" rx="16" fill="#fef3c7"/>
+    <path d="M182 317h26l16-26 14 38" fill="none" stroke="#d97706" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="250" y="282" width="80" height="70" rx="16" fill="#e8f2fb"/>
+    <path d="M270 310h40M270 330h28" stroke="#1f5f8b" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M480 104 638 166v112c0 91-64 146-158 178-94-32-158-87-158-178V166z" fill="url(#shield)"/>
+    <path d="M430 270 466 306 544 218" fill="none" stroke="#fff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="480" cy="214" r="88" fill="#fff" opacity=".08"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="610" y="152" width="224" height="250" rx="22" fill="#fff"/>
+    <rect x="646" y="190" width="94" height="16" rx="8" fill="#12355b"/>
+    <path d="M648 246h128" stroke="#dbe7f2" stroke-width="12" stroke-linecap="round"/>
+    <path d="M648 282h90" stroke="#dbe7f2" stroke-width="12" stroke-linecap="round"/>
+    <path d="M648 338h142" stroke="#d97706" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="776" cy="190" r="18" fill="#d97706"/>
+  </g>
+  <g fill="#d97706">
+    <circle cx="392" cy="242" r="8"/>
+    <circle cx="610" cy="242" r="8"/>
+  </g>
+  <path d="M392 242h88M480 242h130" stroke="#d97706" stroke-width="6" stroke-linecap="round" stroke-dasharray="12 12"/>
+</svg>

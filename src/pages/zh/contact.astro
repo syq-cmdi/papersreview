@@ -1,0 +1,76 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { site } from "@/lib/site";
+
+const contactItems = [
+  { label: "负责人", value: "李飞 系主任" },
+  { label: "电话", value: site.phone, href: `tel:${site.phone}` },
+  { label: "邮箱", value: site.email, href: `mailto:${site.email}` },
+  { label: "地址", value: "北京邮电大学经济管理学院，主教学楼" }
+];
+---
+
+<BaseLayout title="联系我们" description="Finance+AI 课程咨询、合作沟通与报名咨询。">
+  <section class="border-b border-border bg-muted/40 py-14">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Contact"
+        title="联系我们"
+        description="保留旧站课程咨询表单结构，并补充课程负责人与学院联系方式。"
+      />
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="container grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+      <aside class="rounded-card border border-border bg-background p-6 shadow-sm">
+        <h2 class="font-serif text-2xl font-semibold text-foreground">课程咨询</h2>
+        <div class="mt-6 grid gap-4">
+          {contactItems.map((item) => (
+            <div class="rounded-card border border-border bg-muted/35 p-4">
+              <p class="text-xs font-semibold text-signal">{item.label}</p>
+              {item.href ? (
+                <a href={item.href} class="mt-1 block text-sm font-semibold text-foreground hover:text-accent">{item.value}</a>
+              ) : (
+                <p class="mt-1 text-sm font-semibold text-foreground">{item.value}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      <form class="rounded-card border border-border bg-background p-6 shadow-sm" action={`mailto:${site.email}`} method="post" enctype="text/plain">
+        <h2 class="font-serif text-2xl font-semibold text-foreground">报名咨询</h2>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <label class="block">
+            <span class="text-sm font-semibold text-foreground">姓名</span>
+            <input name="name" required class="mt-2 w-full rounded-card border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent" type="text" />
+          </label>
+          <label class="block">
+            <span class="text-sm font-semibold text-foreground">邮箱</span>
+            <input name="email" required class="mt-2 w-full rounded-card border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent" type="email" />
+          </label>
+          <label class="block">
+            <span class="text-sm font-semibold text-foreground">电话</span>
+            <input name="phone" class="mt-2 w-full rounded-card border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent" type="tel" />
+          </label>
+          <label class="block">
+            <span class="text-sm font-semibold text-foreground">身份</span>
+            <select name="identity" class="mt-2 w-full rounded-card border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent">
+              <option>本科生</option>
+              <option>研究生</option>
+              <option>企业合作方</option>
+              <option>其他</option>
+            </select>
+          </label>
+        </div>
+        <label class="mt-4 block">
+          <span class="text-sm font-semibold text-foreground">咨询内容</span>
+          <textarea name="message" required class="mt-2 min-h-36 w-full rounded-card border border-border bg-background px-3 py-2 text-sm outline-none transition focus:border-accent"></textarea>
+        </label>
+        <button type="submit" class="mt-5 rounded-card bg-academic px-5 py-3 text-sm font-semibold text-white shadow-academic transition hover:bg-academic-2">提交咨询</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

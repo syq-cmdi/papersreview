@@ -1,0 +1,252 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import PublicationCard from "@/components/PublicationCard.astro";
+import NewsTimeline from "@/components/NewsTimeline.astro";
+import { byDateDesc, byFeaturedThenDate } from "@/lib/content";
+import { site } from "@/lib/site";
+
+const publications = (await getCollection("publication")).sort(byFeaturedThenDate);
+const news = (await getCollection("news")).sort(byDateDesc);
+const featuredPublications = publications.slice(0, 3);
+const latestNews = news.slice(0, 3);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "金融+AI跨学科实训：基于领域大模型的财报智能分析应用",
+  description: site.description,
+  provider: {
+    "@type": "CollegeOrUniversity",
+    name: "北京邮电大学"
+  },
+  teaches: ["财报智能分析", "领域大模型", "RAG", "知识图谱", "AI for Science"]
+};
+
+const stats = [
+  { value: "6+", label: "论文与专著", note: "已录入阶段性成果" },
+  { value: "8", label: "代表性成果", note: "论文、专著、案例、报告与平台" },
+  { value: "4", label: "博硕学生", note: "1 名博士、3 名硕士深度参与" },
+  { value: "200+", label: "高质量文献", note: "支撑系统综述与理论框架" },
+  { value: "2025-2027", label: "项目周期", note: "AI4S 探索计划" }
+];
+
+const focusAreas = [
+  {
+    title: "财报智能分析平台",
+    description: "基于年报、ESG 公告和舆情摘要构建 Finance-RAG 与财报知识图谱，支持自然语言问答、证据链追踪和指标解释。",
+    image: "/img/project-financial-analysis.svg",
+    imageAlt: "财报文档、知识图谱、RAG 检索与指标分析面板构成的智能分析平台示意图",
+    tags: ["RAG", "知识图谱", "财报分析"]
+  },
+  {
+    title: "云边协同能效优化系统",
+    description: "围绕云中心、区域边缘与接入边缘的三层架构，利用强化学习动态优化边缘节点与云端储能之间的能量分配。",
+    image: "/img/project-cloud-edge-energy.svg",
+    imageAlt: "云中心、边缘节点、储能和强化学习调度策略连接成的绿色算力协同网络示意图",
+    tags: ["强化学习", "绿色算力", "云边协同"]
+  },
+  {
+    title: "AI4S 视角下 AI+金融安全",
+    description: "将大模型、RAG 与智能体引入金融安全教学案例，覆盖合规研判、风险识别与监管报告辅助生成。",
+    image: "/img/project-ai-financial-security.svg",
+    imageAlt: "大模型智能体、RAG 检索和金融风险识别面板共同支撑金融安全教学案例的示意图",
+    tags: ["AI+金融安全", "Agent", "教学案例"]
+  }
+];
+
+const courseTracks = [
+  "商用/国产大模型 API：OpenAI、DeepSeek 与提示工程实践",
+  "Finance-RAG 与知识图谱：财报、ESG、舆情的可信检索与证据链",
+  "本地 Agent 工作流：抓取、检索、推理、写作的自动化分析流程"
+];
+
+const phases = [
+  "基础知识与 Prompt 工程",
+  "RAG 与检索增强",
+  "Agent 开发实践",
+  "企业真实财报分析"
+];
+---
+
+<BaseLayout title={site.title} description={site.description} jsonLd={jsonLd}>
+  <section class="relative overflow-hidden border-b border-border bg-gradient-to-br from-background via-muted/50 to-background">
+    <div class="absolute inset-0 opacity-70" aria-hidden="true">
+      <canvas id="knowledge-flow" class="h-full w-full"></canvas>
+    </div>
+    <div class="container relative grid min-h-[calc(100vh-4rem)] items-center gap-12 py-16 lg:grid-cols-[1.08fr_0.92fr] lg:py-20">
+      <div class="max-w-4xl animate-fade-up">
+        <p class="inline-flex rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-sm font-semibold text-signal">
+          AI for Science · Finance + AI · 北京邮电大学
+        </p>
+        <h1 class="mt-6 font-serif text-5xl font-semibold leading-[1.08] text-foreground md:text-6xl">
+          金融+AI跨学科实训与 AI4S 学术成果平台
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+          围绕企业财报智能分析、领域大模型应用与绿色算力网络韧性研究，连接课程教学、学生项目、论文成果和产学研协同。
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/zh/publications/" class="rounded-card bg-academic px-5 py-3 text-sm font-semibold text-white shadow-academic transition hover:bg-academic-2">查看学术成果</a>
+          <a href="#course" class="rounded-card border border-border bg-background/80 px-5 py-3 text-sm font-semibold text-foreground transition hover:border-accent hover:text-accent">浏览课程架构</a>
+        </div>
+      </div>
+
+      <div class="relative rounded-card border border-border bg-background/80 p-5 shadow-academic backdrop-blur">
+        <div class="grid gap-3">
+          {courseTracks.map((track, index) => (
+            <div class="rounded-card border border-border bg-muted/50 p-4">
+              <p class="text-xs font-semibold text-signal">Track {index + 1}</p>
+              <p class="mt-2 text-sm leading-6 text-foreground">{track}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-border bg-background py-12">
+    <div class="container grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      {stats.map((stat) => (
+        <div class="rounded-card border border-border bg-muted/40 p-5">
+          <p class="font-serif text-3xl font-semibold text-academic dark:text-primary" data-count={stat.value}>{stat.value}</p>
+          <h2 class="mt-2 text-sm font-semibold text-foreground">{stat.label}</h2>
+          <p class="mt-2 text-xs leading-5 text-muted-foreground">{stat.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="container grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+      <SectionHeading
+        eyebrow="Latest"
+        title="最新动态"
+        description="课程建设、项目里程碑、论文录用和会议报告统一进入动态中心，后续只需新增 Markdown 文件即可更新。"
+      />
+      <NewsTimeline items={latestNews} />
+    </div>
+  </section>
+
+  <section class="border-y border-border bg-muted/40 py-16">
+    <div class="container">
+      <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <SectionHeading
+          eyebrow="Highlights"
+          title="精选成果"
+          description="从中期报告和课程材料中提取的代表性论文、会议与专著。"
+        />
+        <a href="/zh/publications/" class="text-sm font-semibold text-academic hover:text-accent dark:text-primary">进入成果库</a>
+      </div>
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        {featuredPublications.map((publication) => <PublicationCard publication={publication} compact />)}
+      </div>
+    </div>
+  </section>
+
+  <section id="course" class="py-16">
+    <div class="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <SectionHeading
+        eyebrow="Course"
+        title="四阶段课程路径"
+        description="课程采用“知识传授-AI工具实操-真实案例演练”的三阶教学模式，逐步过渡到真实企业财报分析与 AI 工程实践。"
+      />
+      <div class="grid gap-4 sm:grid-cols-2">
+        {phases.map((phase, index) => (
+          <div class="rounded-card border border-border bg-background p-5">
+            <p class="text-sm font-semibold text-signal">Phase {index + 1}</p>
+            <h3 class="mt-2 font-serif text-xl font-semibold text-foreground">{phase}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-border bg-background py-16">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Projects"
+        title="项目案例预览"
+        description="精选财报智能分析、云边协同能效优化与 AI+金融安全三个代表方向，完整案例可进入项目案例页继续浏览。"
+      />
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        {focusAreas.map((item) => (
+          <article class="overflow-hidden rounded-card border border-border bg-background shadow-sm transition hover:border-accent/70 hover:shadow-academic">
+            <img src={item.image} alt={item.imageAlt} class="aspect-[16/9] w-full bg-muted object-cover" loading="lazy" />
+            <div class="p-5">
+              <h3 class="font-serif text-xl font-semibold text-foreground">{item.title}</h3>
+              <p class="mt-3 text-sm leading-6 text-muted-foreground">{item.description}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {item.tags.map((tag) => <span class="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground">{tag}</span>)}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const canvas = document.querySelector("#knowledge-flow");
+  if (canvas instanceof HTMLCanvasElement) {
+    const context = canvas.getContext("2d");
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const nodes = Array.from({ length: 28 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      vx: (Math.random() - 0.5) * 0.0008,
+      vy: (Math.random() - 0.5) * 0.0008,
+      r: 1.5 + Math.random() * 2.5
+    }));
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.max(1, Math.floor(rect.width * window.devicePixelRatio));
+      canvas.height = Math.max(1, Math.floor(rect.height * window.devicePixelRatio));
+    };
+
+    const draw = () => {
+      if (!context) return;
+      const width = canvas.width;
+      const height = canvas.height;
+      context.clearRect(0, 0, width, height);
+      context.fillStyle = "rgba(217, 119, 6, 0.48)";
+      context.strokeStyle = "rgba(31, 95, 139, 0.15)";
+      context.lineWidth = 1 * window.devicePixelRatio;
+      for (const node of nodes) {
+        node.x += node.vx;
+        node.y += node.vy;
+        if (node.x < 0 || node.x > 1) node.vx *= -1;
+        if (node.y < 0 || node.y > 1) node.vy *= -1;
+      }
+      for (let i = 0; i < nodes.length; i += 1) {
+        for (let j = i + 1; j < nodes.length; j += 1) {
+          const a = nodes[i];
+          const b = nodes[j];
+          const dx = (a.x - b.x) * width;
+          const dy = (a.y - b.y) * height;
+          const distance = Math.hypot(dx, dy);
+          if (distance < 190 * window.devicePixelRatio) {
+            context.globalAlpha = 1 - distance / (190 * window.devicePixelRatio);
+            context.beginPath();
+            context.moveTo(a.x * width, a.y * height);
+            context.lineTo(b.x * width, b.y * height);
+            context.stroke();
+          }
+        }
+      }
+      context.globalAlpha = 1;
+      for (const node of nodes) {
+        context.beginPath();
+        context.arc(node.x * width, node.y * height, node.r * window.devicePixelRatio, 0, Math.PI * 2);
+        context.fill();
+      }
+      if (!media.matches) requestAnimationFrame(draw);
+    };
+
+    resize();
+    draw();
+    window.addEventListener("resize", resize);
+  }
+</script>

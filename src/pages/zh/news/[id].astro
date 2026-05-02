@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const items = await getCollection("news");
+  return items.map((item) => ({
+    params: { id: item.id },
+    props: { item }
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+
+const categoryMap = {
+  course: "课程",
+  research: "科研",
+  award: "获奖",
+  talk: "报告",
+  media: "媒体",
+  milestone: "节点"
+};
+
+const dateText = new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "long", day: "numeric" }).format(item.data.date);
+---
+
+<BaseLayout title={item.data.title} description={item.data.summary ?? "新闻动态详情"}>
+  <article class="container max-w-3xl py-14">
+    <a href="/zh/news/" class="text-sm font-semibold text-academic hover:text-accent dark:text-primary">返回新闻列表</a>
+    <div class="mt-6 flex flex-wrap items-center gap-2 text-xs font-semibold text-muted-foreground">
+      <time datetime={item.data.date.toISOString()}>{dateText}</time>
+      <span class="rounded-full bg-muted px-2.5 py-1">{categoryMap[item.data.category]}</span>
+      {item.data.tags.map((tag) => <span class="rounded-full border border-border px-2.5 py-1">{tag}</span>)}
+    </div>
+    <h1 class="mt-5 font-serif text-4xl font-semibold leading-tight text-foreground">{item.data.title}</h1>
+    {item.data.summary && <p class="mt-6 rounded-card border border-border bg-muted/50 p-5 text-base leading-8 text-foreground">{item.data.summary}</p>}
+    <div class="prose prose-slate mt-10 max-w-none dark:prose-invert">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

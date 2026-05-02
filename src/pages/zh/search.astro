@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+---
+
+<BaseLayout title="站内搜索" description="搜索 Finance+AI 课程网站的论文、新闻、项目、报告、团队与资源内容。">
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+  </Fragment>
+
+  <section class="border-b border-border bg-muted/40 py-14">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Search"
+        title="站内搜索"
+        description="使用 Pagefind 为静态站生成全文索引，部署前构建命令会自动生成搜索文件。"
+      />
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="container max-w-4xl">
+      <div id="search" class="rounded-card border border-border bg-background p-5 shadow-sm"></div>
+      <p class="mt-4 text-sm leading-6 text-muted-foreground">
+        本地开发模式下搜索资源可能尚未生成；执行 npm run build 后，dist/pagefind 会包含完整索引。
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    if ("PagefindUI" in window) {
+      new window.PagefindUI({
+        element: "#search",
+        showSubResults: true,
+        resetStyles: false,
+        translations: {
+          placeholder: "搜索论文、新闻、项目或团队成员"
+        }
+      });
+    }
+  });
+</script>

@@ -1,0 +1,40 @@
+{
+  "name": "shiyuqi4ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@11.8.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build && pagefind --site dist --output-subdir pagefind",
+    "preview": "astro preview",
+    "typecheck": "astro check",
+    "index:search": "pagefind --site dist --output-subdir pagefind",
+    "deploy": "wrangler pages deploy ./dist --project-name=shiyuqi4ai"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/react": "^5.0.4",
+    "@astrojs/rss": "^4.0.18",
+    "@tailwindcss/typography": "^0.5.19",
+    "astro": "^6.2.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.14.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^3.4.19",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.5.0",
+    "pagefind": "^1.5.2",
+    "postcss": "^8.5.13",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.87.0"
+  }
+}

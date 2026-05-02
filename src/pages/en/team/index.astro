@@ -1,0 +1,74 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { site } from "@/lib/site";
+
+const members = (await getCollection("team")).sort((a, b) => a.data.order - b.data.order);
+const groupMap = {
+  lead: "Lead",
+  faculty: "Faculty",
+  industry: "Industry Mentor",
+  advisor: "Advisor",
+  ta: "Teaching Assistant",
+  student: "Student",
+  alumni: "Alumni"
+};
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Finance+AI Team",
+  itemListElement: members.map((member, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Person",
+      name: member.data.nameEn ?? member.data.name,
+      affiliation: member.data.affiliationEn ?? site.organizationEn,
+      jobTitle: member.data.roleEn ?? member.data.role
+    }
+  }))
+};
+---
+
+<BaseLayout lang="en" title="Team" description="Faculty, industry mentors and student contributors for the Finance+AI course and AI4S project." jsonLd={jsonLd}>
+  <section class="border-b border-border bg-muted/40 py-14">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Team"
+        title="Faculty and Contributors"
+        description="Team entries are generated from Markdown files and can be expanded as new mentors and students join."
+      />
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="container grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {members.map((member) => (
+        <article class="rounded-card border border-border bg-background p-5 shadow-sm transition hover:border-accent/70 hover:shadow-academic">
+          <div class="flex items-start gap-4">
+            <img
+              src={member.data.image ?? "/img/person3.jpg"}
+              alt={`${member.data.nameEn ?? member.data.name} portrait`}
+              class="h-20 w-20 rounded-card border border-border object-cover"
+              loading="lazy"
+            />
+            <div>
+              <p class="text-xs font-semibold text-signal">{groupMap[member.data.group]}</p>
+              <h2 class="mt-1 font-serif text-2xl font-semibold text-foreground">{member.data.nameEn ?? member.data.name}</h2>
+              <p class="mt-1 text-sm leading-6 text-muted-foreground">{member.data.roleEn ?? member.data.role}</p>
+            </div>
+          </div>
+          {(member.data.affiliationEn ?? member.data.affiliation) && <p class="mt-4 text-sm leading-6 text-muted-foreground">{member.data.affiliationEn ?? member.data.affiliation}</p>}
+          <div class="mt-4 flex flex-wrap gap-2">
+            {(member.data.tagsEn.length > 0 ? member.data.tagsEn : member.data.tags).map((tag) => <span class="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground">{tag}</span>)}
+          </div>
+          <div class="mt-5 flex flex-wrap gap-3">
+            {member.data.email && <a class="text-sm font-semibold text-academic hover:text-accent dark:text-primary" href={`mailto:${member.data.email}`}>Email</a>}
+            {member.data.homepage && <a class="text-sm font-semibold text-academic hover:text-accent dark:text-primary" href={member.data.homepage}>Homepage</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
